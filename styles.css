@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #ffaa00;
+    color: white;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.intro-section {
+    width: 80%;
+    background-color: #fff;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center; 
+    background-color: #ffffff; 
+    color: #858383; 
+    border-radius: 8px; 
+    margin-bottom: 20px; 
+}
+
+.intro-section h1 {
+    margin: 0 0 10px; 
+    color: #d17b00; 
+}
+
+.intro-section .slogan {
+    font-weight: bold; 
+    color: #ffaa00; 
+}
+
+.destaque {
+    font-weight: bold; 
+    color: #ffaa00; 
+}
+
+
+.intro-section .intro-text {
+    width: 80%;
+    font-size: 16px; 
+    line-height: 1.6; 
+    margin: 20px auto 0; 
+}
+
+/* Estilos para a seção de cadastro e seus campos */
+#signup-section input[type="text"],
+#signup-section input[type="email"],
+#signup-section input[type="password"],
+#search-input {
+    width: calc(50% - 20px); 
+    padding: 15px; 
+    margin-bottom: 10px; 
+    border-radius: 5px; 
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 51%; 
+    padding: 15px; 
+    margin-top: 10px; 
+    background-color: #ffaa00; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+/* Media query para telas pequenas (ex: celulares) */
+@media (max-width: 100%) {
+    body {
+        padding: 10px; /* Reduz o padding do corpo em telas menores para utilizar melhor o espaço */
+    }
+
+    .section, .header { /* Ajusta as seções e o cabeçalho para telas menores */
+        width: 100%; 
+        box-sizing: border-box; 
+    }
+}
+
+.header, #recommendations-section, #search-section, #signup-section, #results-section {
+    width: 80%;
+    background-color: #fff;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+#logo {
+    height: 130px;
+    width: 90px;
+}
+
+#popcorn {
+    height: 100px;
+    width: 100px;
+}
+
+h2 {
+    color: #ffaa00;
+}
+
+#recommendations {
+    display: flex;
+    justify-content: space-between;
+    width: 80%; 
+}
+
+#recommendations div, #results-section div {
+    margin: 10px;
+    text-align: center;
+}
+
+img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+}
+
+button {
+    cursor: pointer;
+    background-color: #ffaa00;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+input:invalid {
+    border: 2px solid red;
+}
+

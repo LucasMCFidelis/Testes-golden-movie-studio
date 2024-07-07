@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Golden Movie</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <img src="./img/logo.png" alt="Logo" id="logo"> 
+    </div>
+    <div class="intro-section">
+        <p class="slogan">ILUMINANDO SEU CAMINHO NO MUNDO DO CINEMA!</p>
+        <p class="intro-text">Bem-vindo ao <span class="destaque">Golden Movie Studio</span>, seu destino definitivo para descobertas cinematográficas. Aqui, a paixão pelo cinema brilha intensamente, guiando você através de um universo de filmes fascinantes. Explore recomendações personalizadas, encontre seus próximos favoritos e mergulhe em histórias que ficarão com você muito tempo depois que os créditos terminarem. Aqui cada filme é uma jornada dourada esperando para ser desvendada.</p>
+
+    </div>
+    <div id="recommendations-section">
+        <h2>RECOMENDAÇÕES DO DIA</h2>
+        <div id="recommendations"></div>
+    </div>
+    <div id="search-section">
+        <h2>ENCONTRE SEU FILME</h2>
+        <input type="text" id="search-input" placeholder="Digite o nome do filme...">
+        <button id="search-button">Buscar</button>
+        <button id="clear-button">Limpar Busca</button>
+    </div>
+    
+    <div id="results-section">
+        <img src="./img/popcorn.gif" alt="popcorn" id="popcorn">
+    </div>
+
+    <div id="signup-section">
+        <h2>SEJA MEMBRO</h2>
+        <label>Receba em primeira mão promoções e novidades do cinema</label>
+        <input type="text" id="signup-firstname" placeholder="Nome...*" required> 
+        <input type="text" id="signup-lastname" placeholder="Sobrenome...*" required> 
+        <input type="email" id="signup-email" placeholder="Email...*" required> 
+        <input type="text" id="signup-phone" placeholder="Telefone..."> 
+        <input type="password" id="signup-password" placeholder="Senha...*" required> 
+        <button id="signup-button">Cadastrar</button>
+        <div id="signup-response"></div>
+        <p><a href="./polices.html">Política de Privacidade</a></p>
+
+    </div>
+     
+    <footer>
+        <p>&copy; 2024 Golden Movie Studio. Todos os direitos reservados.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
