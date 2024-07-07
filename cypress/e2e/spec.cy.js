@@ -1,4 +1,3 @@
-/// <reference types="cypress"/>
 import { faker } from '@faker-js/faker';
 
 describe('US-012-Funcionalidade: Cadastro de membros', () => {
@@ -44,6 +43,18 @@ describe('US-012-Funcionalidade: Cadastro de membros', () => {
     const name = faker.name.lastName();
     return generateInvalidName(name);
   };
+
+  it('Deve fazer cadastro com os campos controlados, adicionando o usuário com email luis@teste.com', () => {
+    cy.visit('http://192.168.56.1:8080/')
+
+    cy.get('#signup-firstname').type('Luis');
+    cy.get('#signup-lastname').type('Araujo');
+    cy.get('#signup-email').type('luis@teste.com')
+    const password = generateValidPassword();
+    cy.get('#signup-password').type(password);
+    cy.get('#signup-button').click()
+    cy.get('#signup-response').should('contain', 'Cadastro realizado com sucesso!')
+  });
 
   it('Deve fazer o cadastro de campos obrigatórios', () => {
     cy.visit('http://192.168.56.1:8080/')
@@ -151,7 +162,7 @@ describe('US-012-Funcionalidade: Cadastro de membros', () => {
 
     cy.get('#signup-firstname').type(generateValidFirstName());
     cy.get('#signup-lastname').type(generateValidLastName());
-    cy.get('#signup-email').type('alice@teste.com')
+    cy.get('#signup-email').type('luis@teste.com')
     cy.get('#signup-phone').type(faker.phone.number('##########'))
     const password = generateValidPassword();
     cy.get('#signup-password').type(password);
