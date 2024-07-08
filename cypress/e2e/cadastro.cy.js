@@ -68,7 +68,7 @@ describe('US-012-Funcionalidade: Cadastro de membros', () => {
     cy.get('#signup-response').should('contain', 'Cadastro realizado com sucesso!')
   });
 
-  it.only('Deve bloquear o cadastro utilizando uma senha fraca', () => {
+  it('Deve bloquear o cadastro utilizando uma senha fraca', () => {
     cy.preencherCadastro(generateValidFirstName(), generateValidLastName(), faker.internet.email(), faker.phone.number('##########'), faker.internet.password(8, true, /[A-Za-z0-9]/))
     cy.get('#signup-response').should('contain', '{"message":"Senha deve ter pelo menos 8 caracteres, incluir uma letra maiúscula, um número e um caractere especial (!@#$&*)"}')
   });

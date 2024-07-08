@@ -42,3 +42,8 @@ Cypress.Commands.add('preencherCadastro', (nome, sobrenome, email, telefone, sen
     }
     cy.get('#signup-button').click();
 });
+
+Cypress.Commands.add('buscarFilme', (filme) => { 
+    cy.get('#search-input').type(filme)
+    cy.get('#search-button').click()
+});
