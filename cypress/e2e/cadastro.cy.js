@@ -53,13 +53,7 @@ describe('US-012-Funcionalidade: Cadastro de membros', () => {
   const vazio = '';
 
   it('Deve fazer cadastro com os campos controlados, adicionando o usuário com email luis@teste.com', () => {
-
-    cy.get('#signup-firstname').type('Luis');
-    cy.get('#signup-lastname').type('Araujo');
-    cy.get('#signup-email').type('luis@teste.com')
-    const password = generateValidPassword();
-    cy.get('#signup-password').type(password);
-    cy.get('#signup-button').click()
+    cy.preencherCadastro(generateValidFirstName(), generateValidLastName(), 'luis@teste.com', faker.phone.number('##########'), generateValidPassword())
     cy.get('#signup-response').should('contain', 'Cadastro realizado com sucesso!')
   });
 
@@ -71,72 +65,40 @@ describe('US-012-Funcionalidade: Cadastro de membros', () => {
   it('Deve fazer o cadastro com todos os campos', () => {
     cy.preencherCadastro(generateValidFirstName(), generateValidLastName(), faker.internet.email(), faker.phone.number('##########'), generateValidPassword())
     cy.get('#signup-response').should('contain', 'Cadastro realizado com sucesso!')
-    
-    cy.get('#signup-response').should('contain', 'Cadastro realizado com sucesso!')
   });
 
   it('Deve bloquear o cadastro utilizando uma senha fraca', () => {
-    
     cy.preencherCadastro(generateValidFirstName(), generateValidLastName(), faker.internet.email(), faker.phone.number('##########'), faker.internet.password(8, true, /[A-Za-z0-9!@#$%^&*()_+{}\[\]:;"'<>?,.\/]/))
-    
     cy.get('#signup-response').should('contain', '{"message":"Senha deve ter pelo menos 8 caracteres, incluir uma letra maiúscula, um número e um caractere especial (!@#$&*)"}')
   });
   
   it('Deve bloquear o cadastro com nome invalido', () => {
     cy.preencherCadastro(generateInvalidFirstName(), generateValidLastName(), faker.internet.email(), faker.phone.number('##########'), generateValidPassword())
-    
     cy.get('#signup-response').should('contain', '{"message":"Nome deve conter apenas caracteres alfabéticos, acentuados e espaços"}')
   });
 
-  it.only('Deve bloquear o cadastro com campo nome vazio', () => {
+  it('Deve bloquear o cadastro com campo nome vazio', () => {
     cy.preencherCadastro(vazio, generateValidLastName(), faker.internet.email(), faker.phone.number('##########'), generateValidPassword());
     cy.get('#signup-response').should('contain', '{"message":"Nome não pode estar vazio"}');
   });
   
   it('Deve bloquear o cadastro com campo sobrenome vazio', () => {
-  
-    cy.get('#signup-firstname').type(generateValidFirstName());
-
-    cy.get('#signup-email').type(faker.internet.email())
-    cy.get('#signup-phone').type(faker.phone.number('##########'))
-    const password = generateValidPassword();
-    cy.get('#signup-password').type(password);
-    cy.get('#signup-button').click()
-    cy.get('#signup-response').should('contain', '{"message":"Sobrenome não pode estar vazio"}')
+    cy.preencherCadastro(generateValidFirstName(), vazio, faker.internet.email(), faker.phone.number('##########'), generateValidPassword());
+    cy.get('#signup-response').should('contain', '{"message":"Sobrenome não pode estar vazio"}');
   });
   
   it('Deve bloquear o cadastro com campo email vazio', () => {
-  
-    cy.get('#signup-firstname').type(generateValidFirstName());
-    cy.get('#signup-lastname').type(generateValidLastName());
-    
-    cy.get('#signup-phone').type(faker.phone.number('##########'))
-    const password = generateValidPassword();
-    cy.get('#signup-password').type(password);
-    cy.get('#signup-button').click()
-    cy.get('#signup-response').should('contain', '{"message":"E-mail não pode estar vazio"}')
+    cy.preencherCadastro(generateValidFirstName(), generateValidLastName(), vazio, faker.phone.number('##########'), generateValidPassword());
+    cy.get('#signup-response').should('contain', '{"message":"E-mail não pode estar vazio"}');
   });
-
+  
   it('Deve bloquear o cadastro com campo senha vazio', () => {
-
-    cy.get('#signup-firstname').type(generateValidFirstName());
-    cy.get('#signup-lastname').type(generateValidLastName());
-    cy.get('#signup-email').type(faker.internet.email())
-    cy.get('#signup-phone').type(faker.phone.number('##########'))
-    
-    cy.get('#signup-button').click()
+    cy.preencherCadastro(generateValidFirstName(), generateValidLastName(), faker.internet.email(), faker.phone.number('##########'), vazio);
     cy.get('#signup-response').should('contain', '{"message":"Senha não pode estar vazia"}')
   });
 
   it('Deve bloquear o cadastro com email repetido', () => {
-
-    cy.get('#signup-firstname').type(generateValidFirstName());
-    cy.get('#signup-lastname').type(generateValidLastName());
-    cy.get('#signup-email').type('luis@teste.com')
-    cy.get('#signup-phone').type(faker.phone.number('##########'))
-    const password = generateValidPassword();
-    cy.get('#signup-password').type(password);
-    cy.get('#signup-button').click()
+    cy.preencherCadastro(generateValidFirstName(), generateValidLastName(), 'luis@teste.com', faker.phone.number('##########'), generateValidPassword())
     cy.get('#signup-response').should('contain', '{"message":"Este email já está cadastrado."}')
   });
   
@@ -151,9 +113,7 @@ describe('US-012-Funcionalidade: Cadastro de membros', () => {
     });
 
     cy.get('a').contains('Política de Privacidade').click();
-  
     cy.url().should('include', '/polices.html'); 
-  
     cy.get('h1').should('contain', 'Política de Privacidade');
   });
   
