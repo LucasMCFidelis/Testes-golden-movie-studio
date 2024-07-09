@@ -4,6 +4,10 @@ describe('US-012- Funcionalidade: Listar recomendações', () => {
     beforeEach(() => {
       cy.visit('/')
     });
+
+    afterEach(() => {
+        cy.screenshot()
+      });
     
     it('Deve validar se seção de recomendações está visível', () => {
         cy.get('#recommendations-section').should('be.visible');

@@ -4,6 +4,10 @@ describe('US-015- Funcionalidade: Buscar filmes', () => {
   beforeEach(() => {
     cy.visit('/')
   });
+  
+  afterEach(() => {
+    cy.screenshot()
+  });
 
   const filmeExistente = 'Matrix';
   const filmeInexistente = ' ';
