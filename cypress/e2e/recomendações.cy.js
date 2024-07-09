@@ -1,6 +1,6 @@
 /// <reference types = "cypress"/>
 
-describe('US-012- Funcionalidade: Listar recomendações', () => {
+describe('US-012', () => {
     beforeEach(() => {
       cy.visit('/')
     });
@@ -9,15 +9,15 @@ describe('US-012- Funcionalidade: Listar recomendações', () => {
         cy.screenshot()
       });
     
-    it('Deve validar se seção de recomendações está visível', () => {
+    it('Valida se seção de recomendações está visível', () => {
         cy.get('#recommendations-section').should('be.visible');
     });
     
-    it('Deve validar se seção de recomendações está preenchida', () => {
+    it('Valida se seção de recomendações está preenchida', () => {
     cy.get('#recommendations').children().should('have.length.greaterThan', 0);
     });
 
-    it('Deve validar que os filhos da seção de recomendações estão sendo atualizados', () => {
+    it('Valida atualização das recomendações', () => {
         cy.get('#recommendations p').then(($paragraphs) => {
             const initialContents = []
             $paragraphs.each((index, paragraph) => {
